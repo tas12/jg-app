@@ -1,0 +1,140 @@
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #fdfafa;
+  height: 100%;
+}
+
+#app-desc {
+  font-family: Helvetica;
+  color: grey;
+  margin-left: 15px;
+  position: absolute;
+}
+
+#search-results {
+  position: absolute;
+  width: 70%;
+  height: 90%;
+  overflow: auto;
+  margin-top: 15px;
+}
+
+#categories-sidebar {
+  height: 90%;
+  margin-left: 75%;
+  width: 20%;
+  overflow: auto;
+}
+
+.category-option {
+  background-color: lightgreen;
+  height: 200px;
+  min-width: 100%;
+  display: none;
+  text-align: center;
+  border-radius: 2px;
+}
+
+.category-option a {
+  text-decoration: none;
+  color: white;
+  font-family: Helvetica;
+  font-weight: normal;
+}
+
+.category-option h2 {
+  padding: 50px 10px;
+}
+
+.category-option:hover {
+  background-color: #c54db6;
+}
+
+.charity-name a {
+  text-decoration: none;
+  font-family: 'Patua One', Open-sans;
+  color: purple;
+}
+
+.panel:hover .charity-name a {
+  color: #c54db6;
+}
+
+.panel {
+  background-color: white;
+  box-shadow: 5px 5px 5px 2px #e2dfdf;
+  border: 1px solid #f7f6f6;
+  padding: 15px;
+  margin: 0px 15px 15px 15px;
+  display: none;
+}
+
+.panel p {
+  font-family: Helvetica;
+  letter-spacing: 0.2px;
+}
+
+.charity-jg-page a {
+  text-decoration: none;
+  color: #670467;
+}
+
+.charity-jg-page a:hover {
+  text-decoration: none;
+  color: #c54db6;
+}
+
+/* CSS for dropdown from W3Schools */
+.dropbtn {
+    background-color: #9c4caf;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: 15px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    max-height: 400px;
+    overflow: auto;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-family: Helvetica;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #c54db6;
+}
