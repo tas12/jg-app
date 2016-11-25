@@ -22,39 +22,17 @@ const justGivingCategories = (callback) => {
   })
 }
 
-const justGivingCharitiesByCategory = (categoryId) => {
-  // justGivingGetRequest('/charity/search?categoryId=' + categoryId, (res) => {
-  //   const results = res.charitySearchResults.map((charity) => {
-  //     return {
-  //       charityId: charity.charityId,
-  //       name: charity.name,
-  //       description: charity.description
-  //     }
-  //   })
-  //   callback(results)
-  // })
-
-  return new Promise((resolve, reject) => {
-    justGivingGetRequest('/charity/search?categoryId=' + categoryId, (res) => {
-      const results = res.charitySearchResults.map((charity) => {
-        return {
-          id: charity.charityId,
-          name: charity.name,
-          description: charity.description
-        }
-      })
-      resolve(results)
+const justGivingCharitiesByCategory = (categoryId, callback) => {
+  justGivingGetRequest('/charity/search?categoryId=' + categoryId, (res) => {
+    const results = res.charitySearchResults.map((charity) => {
+      return {
+        charityId: charity.charityId,
+        name: charity.name,
+        description: charity.description
+      }
     })
+    callback(results)
   })
-}
-
-const allData = (categoryId, callback) => {
-  justGivingCharitiesByCategory(categoryId)
-    .then((res) => {
-      map(res, charityData, (err, results) => {
-        return callback(results)
-      })
-    })
 }
 
 const justGivingCharityUrls = (charityId, callback) => {
@@ -69,14 +47,8 @@ const justGivingCharityUrls = (charityId, callback) => {
 
 }
 
-const charityData = (data, callback) => {
-  justGivingCharityUrls(data.id, (urls) => {
-    callback(null, Object.assign(data, urls))
-  })
-}
-
 module.exports = {
   justGivingCategories,
   justGivingCharitiesByCategory,
-  allData,
+  justGivingCharityUrls
 }
