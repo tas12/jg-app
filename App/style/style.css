@@ -30,7 +30,6 @@ body {
 }
 
 .category-option {
-  background-color: lightgreen;
   height: 180px;
   max-width: 200px;
   display: none;
@@ -50,7 +49,7 @@ body {
 }
 
 .category-option:hover {
-  background-color: #c54db6;
+  background-color: #c54db6 !important;
 }
 
 .charity-name a {

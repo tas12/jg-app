@@ -1,5 +1,7 @@
 const request = require('./requests.js')
 
+const colours = ['#fba200', '#a1c50e', '#f16c65', '#38bcf1']
+
 const DOM = {
   button: document.querySelector('button[name=jg-request]'),
   body: document.querySelector('body'),
@@ -30,7 +32,7 @@ const addCharitiesToDom = (charitiesArr) => {
 }
 
 const addCategoriesToDropdown = (arrOfCategories) => {
-  arrOfCategories.forEach((el) => {
+  arrOfCategories.forEach((el, i) => {
     const category = document.createElement('a')
     category.href = '#'
     category.textContent = el.category
@@ -38,6 +40,7 @@ const addCategoriesToDropdown = (arrOfCategories) => {
     newCat.querySelector('h2 a').textContent = el.category
     newCat.querySelector('h2 a').href = '#'
     newCat.style.display = 'block'
+    newCat.style.backgroundColor = colours[i % colours.length]
     DOM.categoriesSidebar.appendChild(newCat)
     category.addEventListener('click', () => {
       DOM.searchResults.innerHTML = ''

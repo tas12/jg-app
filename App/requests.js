@@ -1,7 +1,5 @@
 const key = require('./config.js').JUST_GIVING_API_KEY
 
-const map = require('async').map
-
 const justGivingGetRequest = (endpoint, callback) => {
   const xhr = new XMLHttpRequest()
   xhr.onreadystatechange = () => {
