@@ -4,13 +4,22 @@ A web app using the JustGiving API to display charities registered on JustGiving
 
 ## Installation
 
-Have Webpack installed globally: `npm i -g webpack`
++ Create a `config.js` file in the root directory.
 
-`npm i`
+  Add the following:
+  ```
+  module.exports = {
+    JUST_GIVING_API_KEY: [your API key]
+  }
+```
 
-`webpack`
++ Have Webpack installed globally: `npm i -g webpack`
 
-`npm start`
++ Install dependencies: `npm i`
+
++ Build javascript file: `webpack`
+
++ Start the server: `npm start`
 
 ## Wireframes
 
