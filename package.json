@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/tas12/jg-app#readme",
   "dependencies": {
-    "async": "^2.1.4",
     "chai": "^3.5.0",
     "hapi": "^15.2.0",
     "inert": "^4.0.2",
