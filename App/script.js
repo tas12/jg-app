@@ -13,16 +13,19 @@ const DOM = {
 }
 
 const addCharitiesToDom = (charitiesArr) => {
-  charitiesArr.forEach((charity) => {
+  charitiesArr.forEach((charity, i) => {
     const newPanel = DOM.panel.cloneNode(true)
     DOM.appDescription.style.display = 'none'
+    const delay = '0.' + i + 's'
+    newPanel.style.animationDelay = delay
     newPanel.style.display = 'block'
     newPanel.querySelector('.charity-name a').textContent = charity.name
-    newPanel.querySelector('.charity-name a').href = charity.website
     newPanel.querySelector('.charity-desc').textContent = charity.description
-    newPanel.querySelector('.charity-jg-page a').textContent = 'Visit JustGiving page'
-    newPanel.querySelector('.charity-jg-page a').href = charity.justGivingPage
     DOM.searchResults.appendChild(newPanel)
+    request.justGivingCharityUrls(charity.charityId, (urls) => {
+      newPanel.querySelector('.charity-jg-page a').href = urls.justGivingPage
+      newPanel.querySelector('.charity-name a').href = urls.website
+    })
   })
 }
 
@@ -39,12 +42,12 @@ const addCategoriesToDropdown = (arrOfCategories) => {
     category.addEventListener('click', () => {
       DOM.searchResults.innerHTML = ''
       DOM.dropdownButton.textContent = el.category
-      request.allData(el.id, addCharitiesToDom)
+      request.justGivingCharitiesByCategory(el.id, addCharitiesToDom)
     })
     newCat.addEventListener('click', () => {
       DOM.searchResults.innerHTML = ''
       DOM.dropdownButton.textContent = el.category
-      request.allData(el.id, addCharitiesToDom)
+      request.justGivingCharitiesByCategory(el.id, addCharitiesToDom)
     })
     DOM.dropdownContent.appendChild(category)
   })
