@@ -1,4 +1,3 @@
 node_modules
-lib/certs/*.pem
 config.env
 App/bundle.js
