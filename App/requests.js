@@ -8,9 +8,10 @@ const justGivingGetRequest = (endpoint, callback) => {
       return callback(res)
     }
   }
-  xhr.open('GET', `http://api.sandbox.justgiving.com/${key}/v1${endpoint}`)
+  xhr.open('GET', `http://api.sandbox.justgiving.com/v1${endpoint}`)
   xhr.setRequestHeader('Content-type', 'application/json')
   xhr.setRequestHeader('Accept', 'application/json')
+  xhr.setRequestHeader('x-api-key', key)
   xhr.send()
 }
 
