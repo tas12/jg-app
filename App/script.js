@@ -32,12 +32,17 @@ const createSideBarCategory = (category, i) => {
 const categoryListener = (node, category) => {
   node.addEventListener('click', () => {
     DOM.searchResults.innerHTML = ''
+    DOM.appDescription.style.display = 'none'
+    DOM.loader.classList.add('show-loader')
+    DOM.loader.classList.remove('hide-loader')
     DOM.dropdownButton.textContent = category.category
     request.justGivingCharitiesByCategory(category.id, addCharitiesToDom)
   })
 }
 
 const addCharitiesToDom = (charitiesArr) => {
+  DOM.loader.classList.add('hide-loader')
+  DOM.loader.classList.remove('show-loader')
   charitiesArr.forEach((charity, i) => {
     const newPanel = clonePanel(charity, i)
     request.justGivingCharityUrls(charity.charityId, (urls) => {
@@ -49,7 +54,6 @@ const addCharitiesToDom = (charitiesArr) => {
 
 const clonePanel = (charity, i) => {
   const newPanel = DOM.panel.cloneNode(true)
-  DOM.appDescription.style.display = 'none'
   const delay = '0.' + i + 's'
   newPanel.style.animationDelay = delay
   newPanel.style.display = 'block'

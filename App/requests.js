@@ -12,7 +12,6 @@ const getRequest = (endpoint, callback) => {
 
 const justGivingCategories = (callback) => {
   getRequest('/categories', (res) => {
-    console.log(res)
     return callback(res)
   })
 }

@@ -7,5 +7,6 @@ module.exports = {
   panel: document.querySelector('.panel'),
   appDescription: document.querySelector('#app-desc'),
   categoriesSidebar: document.querySelector('#categories-sidebar'),
-  categoryOption: document.querySelector('.category-option')
+  categoryOption: document.querySelector('.category-option'),
+  loader: document.querySelector('.loader')
 }
