@@ -89,42 +89,43 @@ body {
 
 /* CSS for dropdown from W3Schools */
 .dropbtn {
-    background-color: #9c4caf;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    font-family: Helvetica;
-    letter-spacing: 0.2px;
-    border: none;
-    cursor: pointer;
+  display: flex;
+  background-color: #9c4caf;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  font-family: Helvetica;
+  letter-spacing: 0.2px;
+  border: none;
+  cursor: pointer;
 }
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
-    position: relative;
-    display: inline-block;
-    margin-left: 15px;
+  position: relative;
+  display: inline-block;
+  margin-left: 15px;
 }
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    max-height: 400px;
-    overflow: auto;
-    z-index: 9999;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  max-height: 400px;
+  overflow: auto;
+  z-index: 9999;
 }
 
 /* Links inside the dropdown */
 .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    font-family: Helvetica;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-family: Helvetica;
 }
 
 /* Change color of dropdown links on hover */
@@ -134,12 +135,12 @@ body {
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
-    display: block;
+  display: block;
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-    background-color: #c54db6;
+  background-color: #c54db6;
 }
 
 /* CSS for animation from Codepen */
@@ -164,6 +165,81 @@ body {
   animation-duration:0.4s;
 }
 
+/* Loader from codepen */
+.show-loader {
+  display: inline-flex;
+}
+
+.hide-loader {
+  display: none;
+}
+
+.loader {
+  margin-left: 15px;
+  margin-top: 30px;
+}
+
+.dot {
+  margin: 2px;
+  border-radius: 100%;
+  width: 6px;
+  height: 6px;
+}
+
+.blue {
+  -webkit-animation:
+    pulse_blue 1s ease-in-out infinite,
+    nudge 1s ease-in-out infinite;
+}
+
+.green {
+  -webkit-animation:
+    pulse_green 1s ease-in-out .1s infinite,
+    nudge 1s ease-in-out .1s infinite;
+}
+
+.red {
+  -webkit-animation:
+    pulse_red 1s ease-in-out .2s infinite,
+    nudge 1s ease-in-out .2s infinite;
+}
+
+@-webkit-keyframes pulse_blue {
+  0%, 80%, 100% {
+    background-color: #b4bec8;
+  }
+  40% {
+    background-color: #00adef;
+  }
+}
+
+@-webkit-keyframes pulse_green {
+  0%, 80%, 100% {
+    background-color: #b4bec8;
+  }
+  40% {
+    background-color: #7fc400;
+  }
+}
+
+@-webkit-keyframes pulse_red {
+  0%, 80%, 100% {
+    background-color: #b4bec8;
+  }
+  40% {
+    background-color: #ff4d4d;
+  }
+}
+
+@-webkit-keyframes nudge {
+  0%, 80% {
+    transform: translate(0, 0);
+  }
+  40% {
+    transform: translate(0, -6px);
+  }
+}
+
 @media screen and (min-width: 900px) {
 
   .dropdown:hover .dropdown-content {
@@ -181,6 +257,10 @@ body {
 
   #categories-sidebar {
     display: block;
+  }
+
+  .show-loader {
+    display: flex;
   }
 
 }
