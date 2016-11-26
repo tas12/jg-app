@@ -1,5 +1,7 @@
 # JustGiving: View charities by category
 
+https://just-giving.herokuapp.com
+
 A web app using the JustGiving API to display charities registered on JustGiving.
 
 ## Installation
