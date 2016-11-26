@@ -12,7 +12,7 @@ module.exports = {
     inline: true,
     port: 8080
   },
-
+  
   module: {
     loaders: [
       {
