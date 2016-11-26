@@ -1,29 +1,45 @@
 const request = require('./requests.js')
+const DOM = require('./domElements.js')
+const colours = require('./colours.js')
 
-const colours = ['#fba200', '#a1c50e', '#f16c65', '#38bcf1']
+const addCategoriesToDom = (arrOfCategories) => {
+  arrOfCategories.forEach((el, i) => {
+    createSideBarCategory(el, i)
+    createDropdownCategory(el)
+  })
+}
 
-const DOM = {
-  button: document.querySelector('button[name=jg-request]'),
-  body: document.querySelector('body'),
-  dropdownContent: document.querySelector('.dropdown-content'),
-  dropdownButton: document.querySelector('.dropbtn'),
-  searchResults: document.querySelector('#search-results'),
-  panel: document.querySelector('.panel'),
-  appDescription: document.querySelector('#app-desc'),
-  categoriesSidebar: document.querySelector('#categories-sidebar'),
-  categoryOption: document.querySelector('.category-option')
+request.justGivingCategories(addCategoriesToDom)
+
+const createDropdownCategory = (category) => {
+  const newCategory = document.createElement('a')
+  newCategory.href = '#'
+  newCategory.textContent = category.category
+  DOM.dropdownContent.appendChild(newCategory)
+  categoryListener(newCategory, category)
+}
+
+const createSideBarCategory = (category, i) => {
+  const newCategory = DOM.categoryOption.cloneNode(true)
+  newCategory.querySelector('h2 a').textContent = category.category
+  newCategory.querySelector('h2 a').href = '#'
+  newCategory.style.display = 'block'
+  newCategory.style.backgroundColor = colours[i % colours.length]
+  DOM.categoriesSidebar.appendChild(newCategory)
+  categoryListener(newCategory, category)
+}
+
+const categoryListener = (node, category) => {
+  node.addEventListener('click', () => {
+    DOM.searchResults.innerHTML = ''
+    DOM.dropdownButton.textContent = category.category
+    request.justGivingCharitiesByCategory(category.id, addCharitiesToDom)
+  })
 }
 
 const addCharitiesToDom = (charitiesArr) => {
   charitiesArr.forEach((charity, i) => {
-    const newPanel = DOM.panel.cloneNode(true)
-    DOM.appDescription.style.display = 'none'
-    const delay = '0.' + i + 's'
-    newPanel.style.animationDelay = delay
-    newPanel.style.display = 'block'
-    newPanel.querySelector('.charity-name a').textContent = charity.name
-    newPanel.querySelector('.charity-desc').textContent = charity.description
-    DOM.searchResults.appendChild(newPanel)
+    const newPanel = clonePanel(charity, i)
     request.justGivingCharityUrls(charity.charityId, (urls) => {
       newPanel.querySelector('.charity-jg-page a').href = urls.justGivingPage
       newPanel.querySelector('.charity-name a').href = urls.website
@@ -31,29 +47,14 @@ const addCharitiesToDom = (charitiesArr) => {
   })
 }
 
-const addCategoriesToDropdown = (arrOfCategories) => {
-  arrOfCategories.forEach((el, i) => {
-    const category = document.createElement('a')
-    category.href = '#'
-    category.textContent = el.category
-    const newCat = DOM.categoryOption.cloneNode(true)
-    newCat.querySelector('h2 a').textContent = el.category
-    newCat.querySelector('h2 a').href = '#'
-    newCat.style.display = 'block'
-    newCat.style.backgroundColor = colours[i % colours.length]
-    DOM.categoriesSidebar.appendChild(newCat)
-    category.addEventListener('click', () => {
-      DOM.searchResults.innerHTML = ''
-      DOM.dropdownButton.textContent = el.category
-      request.justGivingCharitiesByCategory(el.id, addCharitiesToDom)
-    })
-    newCat.addEventListener('click', () => {
-      DOM.searchResults.innerHTML = ''
-      DOM.dropdownButton.textContent = el.category
-      request.justGivingCharitiesByCategory(el.id, addCharitiesToDom)
-    })
-    DOM.dropdownContent.appendChild(category)
-  })
+const clonePanel = (charity, i) => {
+  const newPanel = DOM.panel.cloneNode(true)
+  DOM.appDescription.style.display = 'none'
+  const delay = '0.' + i + 's'
+  newPanel.style.animationDelay = delay
+  newPanel.style.display = 'block'
+  newPanel.querySelector('.charity-name a').textContent = charity.name
+  newPanel.querySelector('.charity-desc').textContent = charity.description
+  DOM.searchResults.appendChild(newPanel)
+  return newPanel
 }
-
-request.justGivingCategories(addCategoriesToDropdown)
